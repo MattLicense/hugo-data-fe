@@ -1,0 +1,90 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Hugo Wolferton Data Analysis Tool</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="hwDataApp">
+    <!-- Add your site or application content here -->
+    <div class="container">
+        <div class="header" ng-controller="LoginCtrl">
+            <ul class="nav nav-pills pull-right">
+                <li ng-if="!User.isLogged"><a ng-href="#/login">Login</a></li>
+                <li ng-if="User.isLogged"><a ng-href="#/logout">Logout ({{ User.username }})</a></li>
+            </ul>
+            <h3 class="text-muted"><a ng-href="#/">Hugo Wolferton Data Analysis Tool</a></h3>
+        </div>
+
+        <div loading></div>
+        <div ng-view=""></div>
+
+        <div class="footer-nav" ng-controller="LoginCtrl">
+            <ul class="nav nav-pills" ng-if="User.isLogged">
+                <li ng-if="User.scope.indexOf('client') != -1"><a ng-href="#/admin/client">Client Control</a></li>
+                <li ng-if="User.scope.indexOf('report') != -1"><a ng-href="#/admin/report">Report Control</a></li>
+                <li ng-if="User.scope.indexOf('auth') != -1"><a ng-href="#/admin/user">User Control</a></li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <span>Hugo Wolferton &copy; 2014</span>
+            <span class="pull-right">Created by <a href="http://www.mattlicense.co.uk/" target="_blank">Matthew License</a></span>
+        </div>
+    </div>
+
+    <script src="https://www.google.com/jsapi"></script>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload-shim.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-google-chart/ng-google-chart.js"></script>
+    <script src="bower_components/ng-file-upload-shim/angular-file-upload-html5-shim.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- bower:js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/client.js"></script>
+    <script src="scripts/controllers/clients.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/logout.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/report.js"></script>
+    <script src="scripts/controllers/reports.js"></script>
+    <script src="scripts/controllers/user.js"></script>
+    <script src="scripts/controllers/users.js"></script>
+    <script src="scripts/directives/loading.js"></script>
+    <script src="scripts/services/clientservice.js"></script>
+    <script src="scripts/services/geographyservice.js"></script>
+    <script src="scripts/services/reportservice.js"></script>
+    <script src="scripts/services/userFactory.js"></script>
+    <script src="scripts/services/usersService.js"></script>
+    <script src="scripts/controllers/editclient.js"></script>
+    <script src="scripts/controllers/newclient.js"></script>
+    <script src="scripts/controllers/edituser.js"></script>
+    <script src="scripts/controllers/newuser.js"></script>
+    <script src="scripts/controllers/editreport.js"></script>
+    <script src="scripts/controllers/newreport.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+</body>
+</html>

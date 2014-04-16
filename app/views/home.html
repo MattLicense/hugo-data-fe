@@ -1,0 +1,9 @@
+<div class="row marketing" ng-controller="MainCtrl">
+    <div ng-if="reports.length == 0">No reports found</div>
+    <ul>
+        <li ng-repeat="report in reports"><a ng-href="#/report/{{ report.id }}">
+            <strong>{{ report.id }}</strong><br>
+            {{ report.report_about }}
+        </a></li>
+    </ul>
+</div>

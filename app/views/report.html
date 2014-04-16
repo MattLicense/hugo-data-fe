@@ -1,0 +1,12 @@
+<div class="row marketing" ng-controller="ReportCtrl">
+    <span class="pull-right">Report created for <a href="{{ report.client.client_website }}" target="_blank">{{ report.client.client_name }}</a></span>
+    <h2>About this report</h2>
+    <p>{{ report.report_about }}</p>
+    <select ng-model="selectedAuthority"
+            ng-options="LA.la_code as LA.la_code+' - '+LA.la_name for LA in LAs"
+            ng-change="updateLA()">
+    </select>
+    <div class="chart" ng-repeat="chart in charts">
+        <div google-chart chart="chart"></div>
+    </div>
+</div>

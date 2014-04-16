@@ -1,0 +1,13 @@
+<div class="row marketing" ng-controller="ClientsCtrl">
+    <div class="col-lg-12">
+        <span class="pull-right"><a ng-href="#/admin/client/new">New Client</a></span>
+        <h3>Client Control</h3>
+    </div>
+    <div class="col-lg-12">
+        <ul>
+            <li ng-repeat="client in clients">
+                <a ng-href="#/admin/client/{{ client.id }}">{{ client.client_name }}</a><br>
+            </li>
+        </ul>
+    </div>
+</div>

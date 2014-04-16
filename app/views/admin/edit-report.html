@@ -1,0 +1,26 @@
+<div class="row marketing">
+    <form ng-submit="save()" name="reportForm">
+        <div class="col-lg-12">
+            <span><a ng-href="#/admin/report">&#8592 Back</a></span>
+            <input type="submit" class="pull-right btn" value="Save" ng-disabled="!reportForm.$valid"><br>
+        </div>
+        <div class="col-lg-12">
+            <h3>{{ report.id }}</h3><br>
+            <label>
+                Client:<br>
+                <select ng-model="report.client_id" required><option ng-repeat="client in clients" value="{{ client.id }}">{{ client.client_name }}</option></select>
+            </label><br>
+            <label>
+                About the report:<br>
+                <textarea ng-model="report.report_about" required></textarea>
+            </label><br>
+            <div ng-repeat="col in order">
+                <select ng-model="col.column"><option ng-repeat="header in columns">{{ header }}</option></select>
+                <select ng-model="col.type"><option ng-repeat="type in types">{{ type }}</option></select>
+                <span ng-if="order.length > 1"><a ng-click="order.splice($index,1)">Remove</a></span>
+            </div>
+            <a class="pull-right" ng-click="addGraph()">Add new row</a>
+            <label>Published?: <input type="checkbox" ng-model="published"></label>
+        </div>
+    </form>
+</div>

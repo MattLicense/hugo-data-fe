@@ -1,0 +1,22 @@
+<div class="row marketing">
+    <form ng-submit="save()" name="clientForm">
+        <div class="col-lg-12">
+            <span><a ng-href="#/admin/client">&#8592 Back</a></span>
+            <button ng-if="type == 'edit'" id="delete" class="pull-right btn btn-danger" ng-click="delete()">Delete</button>
+            <input type="submit" class="pull-right btn" value="Save" ng-disabled="!clientForm.$valid"><br>
+        </div>
+        <div class="col-lg-12 has-error" ng-if="error != ''">{{ error }}</div>
+        <div class="col-lg-6 pull-left">
+            <label>Name:<br><input type="text" required ng-model="client.client_name"></label><br>
+            <label>URL:<br><input type="text" required ng-model="client.client_website"></label>
+        </div>
+        <div class="col-lg-6 pull-right">
+            <strong>Primary Contact:</strong><br>
+            <div class="indented">
+                <label>Name:<br><input type="text" required ng-model="client.contact_name"></label><br>
+                <label>Email:<br><input type="text" required ng-model="client.contact_email"></label><br>
+                <label>Phone:<br><input type="text" required ng-model="client.contact_phone"></label>
+            </div>
+        </div>
+    </form>
+</div>

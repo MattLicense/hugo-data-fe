@@ -1,0 +1,6 @@
+<form ng-controller="LoginCtrl" ng-submit="login()">
+    <div ng-if="error != ''" class="has-error">{{ error }}</div>
+    <label>Username: <input type="text" ng-model="username" name="user_logon" placeholder="{{ username }}"></label><br>
+    <label>Password: <input type="password" ng-model="password" name="user_secret" placeholder="{{ password }}"></label>
+    <input type="submit" value="Login">
+</form>
