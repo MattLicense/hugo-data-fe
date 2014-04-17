@@ -19,8 +19,8 @@ Hugo.controller('NewReportCtrl', ['$scope', '$cookieStore', '$location', '$uploa
             headers: { 'Authorization': 'Bearer ' + $cookieStore.get('token') },
             data: {
                 id: $scope.report.id,
-                client_id: $scope.report.client_id,
-                report_about: $scope.report.report_about
+                client_id: $scope.client,
+                report_about: $scope.about
             },
             file: $scope.csv,
             fileFormDataName: 'csv'
