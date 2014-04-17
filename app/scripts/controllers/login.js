@@ -1,6 +1,6 @@
 'use strict';
 
-Hugo.controller('LoginCtrl', ['$scope', '$http', '$window', '$cookieStore', '$location', '$q', 'UserFactory', 'API', function ($scope, $http, $window, $cookieStore, $location, $q, UserFactory, API) {
+Hugo.controller('LoginCtrl', ['$scope', '$http', '$location', '$cookieStore', '$q', 'UserFactory', 'API', function ($scope, $http, $location, $cookieStore, $q, UserFactory, API) {
     $scope.username = '';
     $scope.password = '';
     $scope.token = '';
@@ -19,7 +19,7 @@ Hugo.controller('LoginCtrl', ['$scope', '$http', '$window', '$cookieStore', '$lo
         }).success(function(data) {
             $scope.User.login(data, $scope.username);
             $scope.password = '';   // clear the password
-            $window.location.replace('/');
+            $location.path('home');
         }).error(function(data) {
             $scope.User.logout();
 

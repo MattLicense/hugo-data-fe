@@ -1,9 +1,9 @@
 'use strict';
 
-Hugo.controller('LogoutCtrl', ['$scope', 'UserFactory', function ($scope, UserFactory) {
+Hugo.controller('LogoutCtrl', ['$scope', '$location', 'UserFactory', function ($scope, $location, UserFactory) {
     $scope.logout = function() {
         UserFactory.logout();
-        window.location.replace('/');
+        $location.path('home');
     };
 
     $scope.logout();

@@ -9,7 +9,7 @@ Hugo.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpP
      * This defines all of the routes of the web application, defining which controllers handle the information and the views to display the data
      */
     $routeProvider.when('/', { templateUrl: 'views/home.html', controller: 'MainCtrl', access: { authRequired: false } })
-        .when('/report', { templateUrl: 'views/home.html', controller: 'MainCtrl', access: { authRequired: false } })
+        .when('/home', { templateUrl: 'views/home.html', controller: 'MainCtrl', access: { authRequired: false } })
         .when('/report/:reportId', { templateUrl: 'views/report.html', controller: 'ReportCtrl', access: { authRequired: false } })
         .when('/admin/client', { templateUrl: 'views/admin/clients.html', controller: 'ClientCtrl', access: { authRequired: true, scope: 'client:all' } })
         .when('/admin/client/new', { templateUrl: 'views/admin/client.html', controller: 'NewClientCtrl', access: { authRequired: true, scope: 'client:all' } })
