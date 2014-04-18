@@ -5,6 +5,9 @@ Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location
     clientsPromise.then(function(data) {
         $scope.clients = data;
     });
+
+    $scope.error = '';
+
     var reportPromise = ReportService.get($routeParams.reportId);
     reportPromise.then(function(data) {
         $scope.report = data;
@@ -26,6 +29,7 @@ Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location
     };
 
     $scope.save = function() {
+        $("#submit").attr('disabled','disabled');
         $http({
             url: API + '/report/' + $routeParams.reportId,
             method: 'PUT',
@@ -38,6 +42,23 @@ Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location
             }
         }).success(function(data) {
             $location.path('report/' + $routeParams.reportId);
+        }).error(function(data) {
+            $scope.error = data.error;
+            $("#submit").removeAttr('disabled');
+        });
+    };
+
+    $scope.delete = function() {
+        $("#submit").attr('disabled','disabled');
+        $("#delete").attr('disabled','disabled');
+        $http({
+            url: API + '/report/' + $routeParams.reportId,
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + $cookieStore.get('token') }
+        }).success(function(data) {
+            $location.path('admin/report');
+        }).error(function(data) {
+            $scope.error = data.error;
         });
     };
 

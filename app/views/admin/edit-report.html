@@ -2,8 +2,10 @@
     <form ng-submit="save()" name="reportForm">
         <div class="col-lg-12">
             <span><a ng-href="#/admin/report">&#8592 Back</a></span>
-            <input type="submit" class="pull-right btn" value="Save" ng-disabled="!reportForm.$valid"><br>
+            <button id="delete" class="pull-right btn btn-danger" ng-confirm-click confirmed-click="delete()">Delete</button>
+            <input id="submit" type="submit" class="pull-right btn" value="Save" ng-disabled="!reportForm.$valid"><br>
         </div>
+        <div class="col-lg-12 has-error" ng-if="error != ''">{{ error }}</div>
         <div class="col-lg-12">
             <h3>{{ report.id }}</h3><br>
             <label>
