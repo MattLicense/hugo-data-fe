@@ -1,7 +1,7 @@
 'use strict';
 
 // we define a global variable Hugo which is to be used with all of the Angular.js components
-// ngRoute, ngCookies, googlechart are angular.js extensions that add functionality to the framework
+// ngRoute, ngCookies, googlechart and angularFileUpload are extensions that add functionality to the framework
 window.Hugo = angular.module('hwDataApp', ['ngRoute', 'ngCookies', 'googlechart', 'angularFileUpload']);
 
 Hugo.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
@@ -71,6 +71,6 @@ Hugo.run(['$rootScope', '$location', 'UserFactory', function($rootScope, $locati
 /**
  * Here we define the base URL of the API to be used throughout the application.
  */
-Hugo.value('API', 'http://api.hugowolferton.co.uk');
+Hugo.value('API', 'http://api.mattlicense.co.uk');
 
 google.load("visualization", "1", {packages:['corechart', 'table']});
