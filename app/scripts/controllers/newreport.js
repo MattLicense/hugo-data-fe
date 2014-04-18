@@ -10,7 +10,7 @@ Hugo.controller('NewReportCtrl', ['$scope', '$cookieStore', '$location', '$uploa
 
     $scope.setFile = function($files) {
         $scope.csv = $files[0];
-    }
+    };
 
     $scope.save = function() {
         $scope.uploadFile = $upload.upload({
@@ -24,8 +24,8 @@ Hugo.controller('NewReportCtrl', ['$scope', '$cookieStore', '$location', '$uploa
             },
             file: $scope.csv,
             fileFormDataName: 'csv'
-        }).success(function(response) { // success callback
-            if(response.code == 200) {
+        }).success(function(response, status) { // success callback
+            if(status == 200) {
                 $location.path('admin/report/' + $scope.report.id);
             } else {
                 $scope.error = response.error;
