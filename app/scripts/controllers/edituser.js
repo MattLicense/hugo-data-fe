@@ -1,10 +1,13 @@
 'use strict';
 
-Hugo.controller('EditUserCtrl', ['$scope', '$cookieStore', '$routeParams', '$http', '$location', 'UserService', 'API', function ($scope, $cookieStore, $routeParams, $http, $location, UserService, API) {
+Hugo.controller('EditUserCtrl', ['$scope', '$cookieStore', '$routeParams', '$http', '$location', 'UserService', 'Auth', 'API', function ($scope, $cookieStore, $routeParams, $http, $location, UserService, Auth, API) {
+    Auth.checkLogin();
+
     var rolePromise = UserService.getRoles();
     rolePromise.then(function(data) {
         $scope.roles = data;
     });
+
     var userPromise = UserService.get($routeParams.userId);
     userPromise.then(function(data) {
         $scope.user = data;

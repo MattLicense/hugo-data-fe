@@ -17,7 +17,7 @@ Hugo.controller('LoginCtrl', ['$scope', '$http', '$location', '$cookieStore', '$
             headers: { 'Authorization': 'Basic ' + btoa($scope.username + ':' + $scope.password) },
             data: { 'grant_type': 'client_credentials' }
         }).success(function(data) {
-            $scope.User.login(data, $scope.username);
+            $scope.User.login(data);
             $scope.password = '';   // clear the password
             $location.path('home');
         }).error(function(data) {

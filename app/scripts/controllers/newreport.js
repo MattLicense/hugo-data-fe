@@ -1,6 +1,8 @@
 'use strict';
 
-Hugo.controller('NewReportCtrl', ['$scope', '$cookieStore', '$location', '$upload', 'ReportService', 'ClientService', 'API', function ($scope, $cookieStore, $location, $upload, ReportService, ClientService, API) {
+Hugo.controller('NewReportCtrl', ['$scope', '$cookieStore', '$location', '$upload', 'ReportService', 'ClientService', 'Auth', 'API', function ($scope, $cookieStore, $location, $upload, ReportService, ClientService, Auth, API) {
+    Auth.checkLogin();
+
     var clientsPromise = ClientService.getAll();
     clientsPromise.then(function(data) {
         $scope.clients = data;

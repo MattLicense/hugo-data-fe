@@ -1,6 +1,8 @@
 'use strict';
 
-Hugo.controller('NewUserCtrl', ['$scope', '$cookieStore', '$http', '$location', 'UserService', 'API', function ($scope, $cookieStore, $http, $location, UserService, API) {
+Hugo.controller('NewUserCtrl', ['$scope', '$cookieStore', '$http', '$location', 'UserService', 'Auth', 'API', function ($scope, $cookieStore, $http, $location, UserService, Auth, API) {
+    Auth.checkLogin();
+
     var rolePromise = UserService.getRoles();
     rolePromise.then(function(data) {
         $scope.roles = data;

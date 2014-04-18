@@ -1,10 +1,13 @@
 'use strict';
 
-Hugo.controller('EditClientCtrl', ['$scope', '$cookieStore', '$routeParams', '$http', '$location', 'ClientService', 'API', function ($scope, $cookieStore, $routeParams, $http, $location, ClientService, API) {
+Hugo.controller('EditClientCtrl', ['$scope', '$cookieStore', '$routeParams', '$http', '$location', 'ClientService', 'Auth', 'API', function ($scope, $cookieStore, $routeParams, $http, $location, ClientService, Auth, API) {
     var clientPromise = ClientService.get($routeParams.clientId);
     clientPromise.then(function(data) {
         $scope.client = data;
     });
+
+    Auth.checkLogin();
+
     $scope.error = '';
     $scope.type = 'edit';
 

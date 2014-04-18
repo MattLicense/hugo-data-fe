@@ -1,6 +1,8 @@
 'use strict';
 
-Hugo.controller('NewClientCtrl', ['$scope', '$cookieStore', '$http', '$location', 'API', function ($scope, $cookieStore, $http, $location, API) {
+Hugo.controller('NewClientCtrl', ['$scope', '$cookieStore', '$http', '$location', 'Auth', 'API', function ($scope, $cookieStore, $http, $location, Auth, API) {
+    Auth.checkLogin();
+
     $scope.client = {};
     $scope.error = '';
     $scope.type = 'new';
