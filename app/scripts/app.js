@@ -11,7 +11,7 @@ Hugo.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpP
     $routeProvider.when('/', { templateUrl: 'views/home.html', controller: 'MainCtrl', access: { authRequired: false } })
         .when('/home', { templateUrl: 'views/home.html', controller: 'MainCtrl', access: { authRequired: false } })
         .when('/report/:reportId', { templateUrl: 'views/report.html', controller: 'ReportCtrl', access: { authRequired: false } })
-        .when('/admin/client', { templateUrl: 'views/admin/clients.html', controller: 'ClientCtrl', access: { authRequired: true, scope: 'client:all' } })
+        .when('/admin/client', { templateUrl: 'views/admin/clients.html', controller: 'ClientsCtrl', access: { authRequired: true, scope: 'client:all' } })
         .when('/admin/client/new', { templateUrl: 'views/admin/client.html', controller: 'NewClientCtrl', access: { authRequired: true, scope: 'client:all' } })
         .when('/admin/client/:clientId', { templateUrl: 'views/admin/client.html', controller: 'EditClientCtrl', access: { authRequired: true, scope: 'client:all' } })
         .when('/admin/user', { templateUrl: 'views/admin/users.html', controller: 'UsersCtrl', access: { authRequired: true, scope: 'auth:all' } })
