@@ -14,7 +14,7 @@ Hugo.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpP
         .when('/admin/client', { templateUrl: 'views/admin/clients.html', controller: 'ClientCtrl', access: { authRequired: true, scope: 'client:all' } })
         .when('/admin/client/new', { templateUrl: 'views/admin/client.html', controller: 'NewClientCtrl', access: { authRequired: true, scope: 'client:all' } })
         .when('/admin/client/:clientId', { templateUrl: 'views/admin/client.html', controller: 'EditClientCtrl', access: { authRequired: true, scope: 'client:all' } })
-        .when('/admin/user', { templateUrl: 'views/admin/users.html', controller: 'UserCtrl', access: { authRequired: true, scope: 'auth:all' } })
+        .when('/admin/user', { templateUrl: 'views/admin/users.html', controller: 'UsersCtrl', access: { authRequired: true, scope: 'auth:all' } })
         .when('/admin/user/new', { templateUrl: 'views/admin/user.html', controller: 'NewUserCtrl', access: { authRequired: true, scope: 'auth:all' } })
         .when('/admin/user/:userId', { templateUrl: 'views/admin/user.html', controller: 'EditUserCtrl', access: { authRequired: true, scope: 'auth:all' } })
         .when('/admin/report', { templateUrl: 'views/admin/reports.html', controller: 'ListReportCtrl', access: { authRequired: true, scope: 'report:all' } })
