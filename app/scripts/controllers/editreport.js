@@ -1,17 +1,11 @@
 'use strict';
 
 Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location', '$routeParams', 'ReportService', 'ClientService', 'Auth', 'API', function ($scope, $cookieStore, $http, $location, $routeParams, ReportService, ClientService, Auth, API) {
-    var clientsPromise = ClientService.getAll();
-    clientsPromise.then(function(data) {
-        $scope.clients = data;
-    });
-
     Auth.checkLogin();
 
     $scope.error = '';
 
-    var reportPromise = ReportService.get($routeParams.reportId);
-    reportPromise.then(function(data) {
+    ReportService.get($routeParams.reportId).then(function(data) {
         $scope.report = data;
         if(typeof($scope.report.report_order) == 'undefined'  || $scope.report.report_order == null) {
             var order = [ { column: '', type: '' } ];
@@ -20,10 +14,14 @@ Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location
         }
         $scope.order = order;
         $scope.published = $scope.report.published == 1;
-        $scope.client = $scope.report.client_id;
+        $scope.client = $scope.report.client.id;
         $scope.columns = $scope.report.report_data.columns;
         $scope.columns.splice($scope.columns.indexOf('year'),1);
         $scope.columns.splice($scope.columns.indexOf('local_authority'),1);
+    });
+
+    ClientService.getAll().then(function(data) {
+        $scope.clients = data;
     });
 
     $scope.addGraph = function() {

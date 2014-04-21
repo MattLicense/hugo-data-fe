@@ -10,7 +10,7 @@
             <h3>{{ report.id }}</h3><br>
             <label>
                 Client:<br>
-                <select ng-model="report.client_id" required><option ng-repeat="client in clients" value="{{ client.id }}">{{ client.client_name }}</option></select>
+                <select ng-model="client" required><option ng-repeat="client in clients" value="{{ client.id }}">{{ client.client_name }}</option></select>
             </label><br>
             <label>
                 About the report:<br>
