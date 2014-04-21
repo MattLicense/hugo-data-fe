@@ -40,8 +40,13 @@ Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location
                 published: $scope.published,
                 client_id: $scope.client
             }
-        }).success(function(data) {
-            $location.path('report/' + $routeParams.reportId);
+        }).success(function(data, status) {
+            if(status == 200) {
+                $location.path('report/' + $routeParams.reportId);
+            } else {
+                $scope.error = data.error;
+                $("#submit").removeAttr('disabled');
+            }
         }).error(function(data) {
             $scope.error = data.error;
             $("#submit").removeAttr('disabled');
