@@ -26,9 +26,13 @@ Hugo.controller('EditUserCtrl', ['$scope', '$cookieStore', '$routeParams', '$htt
             url: API + '/auth/user/' + $routeParams.userId,
             headers: { 'Authorization': 'Bearer ' + $cookieStore.get('token') },
             data: $scope.user
-        }).success(function(data){
-            $scope.user = data;
-            $scope.error = '';
+        }).success(function(data, status){
+            if(status == 200) {
+                $scope.user = data;
+                $scope.error = '';
+            } else {
+                $scope.error = data.error;
+            }
             $("#submit").removeAttr('disabled');
         }).error(function(data) {
             $scope.error = data.error;
@@ -42,9 +46,13 @@ Hugo.controller('EditUserCtrl', ['$scope', '$cookieStore', '$routeParams', '$htt
             method: 'DELETE',
             url: API + '/auth/user/' + $scope.user.id,
             headers: { 'Authorization': 'Bearer ' + $cookieStore.get('token') }
-        }).success(function(data){
-            $scope.error = '';
-            $location.path('admin/user');
+        }).success(function(data, status){
+            if(status == 200) {
+                $scope.error = '';
+                $location.path('admin/user');
+            } else {
+                $scope.error = data.error;
+            }
         }).error(function(data) {
             $scope.error = data.error;
             $("#delete").removeAttr('disabled');
