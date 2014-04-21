@@ -16,12 +16,15 @@
                 About the report:<br>
                 <textarea ng-model="report.report_about" required></textarea>
             </label><br>
-            <div ng-repeat="col in order">
-                <select ng-model="col.column"><option ng-repeat="header in columns">{{ header }}</option></select>
-                <select ng-model="col.type"><option ng-repeat="type in types">{{ type }}</option></select>
-                <span ng-if="order.length > 1"><a ng-click="order.splice($index,1)">Remove</a></span>
-            </div>
-            <a class="pull-right" ng-click="addGraph()">Add new row</a>
+            <div>
+                <h4>Report Order</h4>
+                <div ng-repeat="col in order">
+                    <select ng-model="col.column"><option ng-repeat="header in columns">{{ header }}</option></select>
+                    <select ng-model="col.type"><option ng-repeat="type in types">{{ type }}</option></select>
+                    <span ng-if="order.length > 1"><a ng-click="order.splice($index,1)">Remove</a></span>
+                </div>
+                <a class="pull-right" ng-click="addGraph()">Add new row</a>
+            </div><br>
             <label>Published?: <input type="checkbox" ng-model="published"></label>
         </div>
     </form>
