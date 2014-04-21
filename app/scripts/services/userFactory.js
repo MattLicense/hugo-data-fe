@@ -36,7 +36,6 @@ Hugo.service('UserFactory', ['$location', '$cookieStore', function ($location, $
         this.token = '';
         this.username = '';
         this.isLogged = false;
-        $location.path('home');
     };
 
     this.checkLogin();
