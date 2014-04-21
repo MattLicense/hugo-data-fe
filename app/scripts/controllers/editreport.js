@@ -42,7 +42,11 @@ Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location
             }
         }).success(function(data, status) {
             if(status == 200) {
-                $location.path('report/' + $routeParams.reportId);
+                if($scope.published == true) {
+                    $location.path('report/' + $routeParams.reportId);
+                } else {
+                    $location.path('admin/report');
+                }
             } else {
                 $scope.error = data.error;
                 $("#submit").removeAttr('disabled');
