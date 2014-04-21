@@ -37,7 +37,7 @@ Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location
             data: {
                 report_about: $scope.about,
                 report_order: $scope.order,
-                published: $scope.published,
+                published: $scope.published == true,
                 client_id: $scope.client
             }
         }).success(function(data, status) {
