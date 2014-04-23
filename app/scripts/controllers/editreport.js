@@ -8,11 +8,11 @@ Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location
     ReportService.get($routeParams.reportId).then(function(data) {
         $scope.report = data;
         if(typeof($scope.report.report_order) == 'undefined'  || $scope.report.report_order == null) {
-            var order = [ { column: '', type: '' } ];
+            $scope.order = [ { column: '', type: '' } ];
         } else {
-            var order = angular.fromJson($scope.report.report_order);
+            $scope.order = angular.fromJson($scope.report.report_order);
         }
-        $scope.order = order;
+        $scope.about = $scope.report.report_about;
         $scope.published = $scope.report.published == 1;
         $scope.client = $scope.report.client.id;
         $scope.columns = $scope.report.report_data.columns;
@@ -64,7 +64,7 @@ Hugo.controller('EditReportCtrl', ['$scope', '$cookieStore', '$http', '$location
             url: API + '/report/' + $routeParams.reportId,
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer ' + $cookieStore.get('token') }
-        }).success(function(data) {
+        }).success(function() {
             $location.path('admin/report');
         }).error(function(data) {
             $scope.error = data.error;
